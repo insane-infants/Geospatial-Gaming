@@ -1,0 +1,22 @@
+#clickMeButton {
+    font-size: 2em;
+    padding: 15px 30px;
+    border-radius: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto; /* Center the button horizontally */
+}
+
+#clickMeButton:hover {
+    background-color: red}
+
+.funky-text {
+    font-family: 'Comic Sans MS', cursive; /* Replace with a desired funky font */
+    font-size: 2em;
+    font-weight: bold;
+    text-align: center;
+    
+}
