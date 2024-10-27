@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Background Image</title>
+  <title>no images...</title>
   <style>
     body {
       background-image: url('https://www.ecreativeim.com/blog/wp-content/uploads/2011/05/image-not-found.jpg'); /* Replace 'your_image.jpg' with your image path */
@@ -10,6 +10,7 @@
       background-attachment: fixed;
     }
     #b2 {
+        
         font-size: 2em;
         padding: 15px 30px;
         border-radius: 5px;
@@ -26,7 +27,15 @@
 <body>
   <h1><center>Did ya send me any lately????</center></h1>
   
-  <!-- <button id="b2">Click Me</button> -->
-  <script src="script.js"></script>
+  <button id="b2">feeling up for one?</button>
+  <script >const b2 = document.getElementById('b2');
+
+
+    b2.addEventListener('mouseover', () => {
+        button.innerHTML = 'Click Me &#8594;';
+      });
+    b2.addEventListener('click', () => {
+        window.location.href = 'p2.html'; // Replace 'new_page.html' with the actual filename
+    });</script>
 </body>
 </html>

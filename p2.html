@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>let's get one...</title>
+</head>
+<body>
+    <h1>My sweet sweet beauty</h1>
+    <button id="captureButton">Capture</button>
+    <img id="capturedImage" src="" alt="Captured Image">
+
+    <script>
+        const captureButton = document.getElementById('captureButton');
+        const capturedImage = document.getElementById('capturedImage');
+
+        captureButton.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const video = document.createElement('video');
+                video.srcObject = stream;
+                video.style.display = 'none';
+                document.body.appendChild(video);
+
+                const canvas = document.createElement('canvas');
+                const context = canvas.getContext('2d');
+                const width = video.videoWidth;
+                const height = video.videoHeight;
+                canvas.width = width;
+                canvas.height = height;
+
+                const captureImage = () => {
+                    context.drawImage(video, 0, 0, width, height);
+                    const imageDataURL = canvas.toDataURL('image/png');
+                    capturedImage.src = imageDataURL;
+
+                    // You can send the imageDataURL to your server-side script for further processing
+                    // or display it directly on the page.
+                };
+
+                video.play();
+                setTimeout(captureImage, 1000); // Capture image after 1 second
+
+                // Stop the video stream and remove the video and canvas elements
+                video.addEventListener('ended', () => {
+                    stream.getTracks().forEach(track => track.stop());
+                    video.remove();
+                    canvas.remove();
+                });
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+                alert('Error accessing camera. Please check your device settings.');
+            }
+        });
+    </script>
+
+    <h2></h2>
+    <input type="file" id="fileInput" accept="image/*" />
+    
+    <h3></h3>
+    <button onclick="uploadImage()">Upload</button>
+
+    <script>
+        function uploadImage() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];   
+
+
+            // Here, you would typically send the file to a server-side script
+            // to process the image upload. You can use XMLHttpRequest or Fetch API
+            // for this purpose.
+
+            // For a simple demo, you can log the file information to the console:
+            console.log(file);
+        }
+    </script>
+
+</body>
+</html>
