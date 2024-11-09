@@ -1,137 +1,170 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Radar In Space Science Departement</title>
-<script src="https://cdn.maptiler.com/maptiler-sdk-js/v2.3.0/maptiler-sdk.umd.js"></script>
-<link href="https://cdn.maptiler.com/maptiler-sdk-js/v2.3.0/maptiler-sdk.css" rel="stylesheet" />
-<style>
-  body {margin: 0; padding: 0;}
-  #map {position: absolute; top: 0; bottom: 0; width: 100%;}
-</style>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Start your development with Dorang landing page.">
+    <meta name="author" content="Devcrud">
+    <title>Web Maps by 21</title>
+    <!-- font icons -->
+    <link rel="stylesheet" href="assets/vendors/themify-icons/css/themify-icons.css">
+
+    <!-- Bootstrap + Dorang main styles -->
+	<link rel="stylesheet" href="assets/css/dorang.css">
+
 </head>
-<body>
-<script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
-<script src="https://unpkg.com/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
-<div id="map"></div>
-<script>
-    maptilersdk.config.apiKey = 'BFEgJCMjKh8SWcTFQjnf';
-    var map = (window.map = new maptilersdk.Map({
-        container: 'map',
-        style: maptilersdk.MapStyle.STREETS,
-        zoom: 18,
-        center: [74.2931512545985, 31.494549477562778],
-        pitch: 60,
-        antialias: true // create the gl context with MSAA antialiasing, so custom layers are antialiased
-    }));
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home" class="dark-theme">
+    
+    <!-- page navbar -->
+    <nav class="page-navbar" data-spy="affix" data-offset-top="10">
+        <ul class="nav-navbar container">
+            <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Explore</a></li>
+            <li class="nav-item"><a href="#" class="nav-link"><img src="assets/imgs/placeholder.svg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page"></a></li>
+            <li class="nav-item"><a href="#" class="nav-link">Journal</a></li>
+            <li class="nav-item search">
+                <a href="javascript:void(0)" class="nav-link search-toggle"><i class="ti-search"></i> Search</a>
+                <div class="search-wrapper">
+                    <form>
+                        <input type="search" class="form-control" name="" placeholder="hit enter to search">
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </nav><!-- end of page navbar -->
 
-    // parameters to ensure the model is georeferenced correctly on the map
-    var modelOrigin = [74.2931512545985, 31.494549477562778];
-    var modelAltitude = 0;
-    var modelRotate = [Math.PI / 2, 0, 0];
+    <div class="theme-selector">
+        <a href="javascript:void(0)" class="spinner">
+            <i class="ti-paint-bucket"></i>
+        </a>
+        <div class="body">
+            <a href="javascript:void(0)" class="light"></a>
+            <a href="javascript:void(0)" class="dark"></a>
+        </div>
+    </div>  
 
-    var modelAsMercatorCoordinate = maptilersdk.MercatorCoordinate.fromLngLat(
-        modelOrigin,
-        modelAltitude
-    );
+    <!-- page header -->
+    <header class="header">
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1 class="header-title">Web Maps</h1>
+            <p class="header-subtitle">
+                Maps and GIS from Geospatial Web Programming courses <b> 
+                    by Roll Number 21. 
+            </p>
 
-    // transformation parameters to position, rotate and scale the 3D model onto the map
-    var modelTransform = {
-        translateX: modelAsMercatorCoordinate.x,
-        translateY: modelAsMercatorCoordinate.y,
-        translateZ: modelAsMercatorCoordinate.z,
-        rotateX: modelRotate[0],
-        rotateY: modelRotate[1],
-        rotateZ: modelRotate[2],
-        /* Since our 3D model is in real world meters, a scale transform needs to be
-         * applied since the CustomLayerInterface expects units in MercatorCoordinates.
-         */
-        scale: modelAsMercatorCoordinate.meterInMercatorCoordinateUnits()
-    };
+            <button class="btn btn-theme-color modal-toggle"><i class="ti-control-play text-danger"></i>Put on some melody</button>
 
-    var THREE = window.THREE;
+        </div>
+    </header><!-- end of page header -->
 
-    // configuration of the custom layer for a 3D model per the CustomLayerInterface
-    var customLayer = {
-        id: '3d-model',
-        type: 'custom',
-        renderingMode: '3d',
-        onAdd: function (map, gl) {
-            this.camera = new THREE.Camera();
-            this.scene = new THREE.Scene();
+    <!-- modal -->
+    <div class="modalBox">
+        <div class="modalBox-body">
+            <!-- <iframe width="100%" height="450px" class="border-0" 
+            src=""https://www.youtube.com/embed/3ug835LFixU?si=Ryx5jKzbp9iijibe"">
+            </iframe> -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/3ug835LFixU?si=Ryx5jKzbp9iijibe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>          
+    </div><!-- end of modal -->
 
-            // create two three.js lights to illuminate the model
-            var directionalLight = new THREE.DirectionalLight(0xffffff);
-            directionalLight.position.set(0, -70, 100).normalize();
-            this.scene.add(directionalLight);
+    <!-- page container -->
+    <div class="container page-container">
+        <div class="col-md-10 col-lg-8 m-auto">
+            <h6 class="title mb-4">The Maps</h6>
+            <p class="mb-5">The maps we made during lecture or were assigned in class.</p>
+        </div>  
 
-            var directionalLight2 = new THREE.DirectionalLight(0xffffff);
-            directionalLight2.position.set(0, 70, 100).normalize();
-            this.scene.add(directionalLight2);
+        <!-- row -->
+        <div class="row mb-4">
+            <div class="col-md-4",  onclick="openNewPage('assets\\Maps\\radar in spc sci.html')">
+                <a href="javascript:void(0)" class="overlay-img">
+                    <img src="assets/imgs/radar_spc.png" alt="Radar in Space Science.">  
+                    <div class="overlay"></div> 
+                    <div class="des">
+                        <h1 class="title">Radar in Space Science </h1>
+                        <h6 class="subtitle">MapTiler</p>
+                        <p>A 3D Open street base map with a radar vector model added around a location near Space Science Departement.</p>
+                    </div>          
+                </a>
+            </div>
+            <div class="col-md-4", onclick="openNewPage('assets\\Maps\\simpleMap.html')">
+                <a href="javascript:void(0)" class="overlay-img">
+                    <img src="assets/imgs/leaflet lhr.png" alt="Simple Map">  
+                    <div class="overlay"></div> 
+                    <div class="des">
+                        <h1 class="title">Simple Leaflet Map </h1>
+                        <h6 class="subtitle">2D leaflet</p>
+                        <p>basic leaflet library map with no markers or stuff.</p>
+                    </div>          
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="javascript:void(0)" class="overlay-img">
+                    <img src="assets/imgs/img-3.jpg" alt="Download free bootstrap 4 landing page, free boootstrap 4 templates, Download free bootstrap 4.1 landing page, free boootstrap 4.1.1 templates, weber Landing page">  
+                    <div class="overlay"></div> 
+                    <div class="des">
+                        <h1 class="title">Excepteur sint</h1>
+                        <h6 class="subtitle">magna aliqua</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>          
+                </a>
+            </div>          
+        </div><!-- end of row -->
 
-            // use the three.js GLTF loader to add the 3D model to the three.js scene
-            var loader = new THREE.GLTFLoader();
-            loader.load(
-                'https://docs.maptiler.com/sdk-js/assets/34M_17/34M_17.gltf',
-                function (gltf) {
-                    this.scene.add(gltf.scene);
-                }.bind(this)
-            );
-            this.map = map;
+        <a href="#">Load More <i class="ti-angle-double-right angle"></i></a>
 
-            // use the map canvas for three.js
-            this.renderer = new THREE.WebGLRenderer({
-                canvas: map.getCanvas(),
-                context: gl,
-                antialias: true
-            });
 
-            this.renderer.autoClear = false;
-        },
-        render: function (gl, matrix) {
-            var rotationX = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(1, 0, 0),
-                modelTransform.rotateX
-            );
-            var rotationY = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(0, 1, 0),
-                modelTransform.rotateY
-            );
-            var rotationZ = new THREE.Matrix4().makeRotationAxis(
-                new THREE.Vector3(0, 0, 1),
-                modelTransform.rotateZ
-            );
+    </div> <!-- end of page container -->
 
-            var m = new THREE.Matrix4().fromArray(matrix);
-            var l = new THREE.Matrix4()
-                .makeTranslation(
-                    modelTransform.translateX,
-                    modelTransform.translateY,
-                    modelTransform.translateZ
-                )
-                .scale(
-                    new THREE.Vector3(
-                        modelTransform.scale,
-                        -modelTransform.scale,
-                        modelTransform.scale
-                    )
-                )
-                .multiply(rotationX)
-                .multiply(rotationY)
-                .multiply(rotationZ);
+    <!--footer & pre footer -->
+    <div class="contact-section">
+        <div class="overlay"></div>
+        <!-- container -->
+        <div class="container">
+            <div class="col-md-10 col-lg-8 m-auto">
+                <h6 class="title mb-2">Contact Us</h6>
+                <p class="mb-5">Feel Free To Drop Us A Line.</p>
+                <form action="" class="form-group">
+                    <input type="text" size="50" class="form-control" placeholder="Your Name" required>
+                    <input type="email" class="form-control" placeholder="Enter Email"requried>
+                    <textarea name="comment" id="comment" rows="6"   class="form-control" placeholder="Write Something"></textarea>
+                    <input type="submit" value="Send Message" class="form-control">
+                </form>
+            </div>
 
-            this.camera.projectionMatrix = m.multiply(l);
-            this.renderer.state.reset();
-            this.renderer.render(this.scene, this.camera);
-            this.map.triggerRepaint();
+            <!-- footer -->
+            <footer class="footer">
+                <p class="infos">&copy; <script>document.write(new Date().getFullYear())</script>, Made with <i class="ti-heart text-danger"></i> by <a href="http://www.devcrud.com">DevCRUD</a></p>       
+                <span>|</span>  
+                <div class="links">
+                    <a href="#">About</a>
+                    <a href="#">Explore</a>
+                    <a href="#">Journal</a>
+                </div>
+            </footer><!-- end of footer -->
+
+        </div><!-- end of container -->
+    </div><!-- end of pre footer -->
+
+    <!-- core  -->
+    <script src="assets/vendors/jquery/jquery-3.4.1.js"></script>
+    <script src="assets/vendors/bootstrap/bootstrap.bundle.js"></script>
+
+    <!-- bootstrap affix -->
+    <script src="assets/vendors/bootstrap/bootstrap.affix.js"></script>
+
+    <!-- Dorang js -->
+    <script src="assets/js/dorang.js"></script>
+
+    <!-- Page open -->
+
+    <script>
+        function openNewPage(path) {
+          window.location.href = path;
         }
-    };
+      </script>
 
-    map.on('style.load', function () {
-        map.addLayer(customLayer);
-    });
-
-</script>
 </body>
 </html>
